@@ -30,7 +30,6 @@ app.get('/', (req, res) => {
 
 app.post('/submit', (req, res) => {
     console.log(req.body);
-
     const { name, email, mobile } = req.body;
 
     let sql_query = `INSERT INTO STUDENTS (NAME, EMAIL, MOBILE) VALUES('${name}', '${email}', '${mobile}');`;

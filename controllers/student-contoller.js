@@ -13,7 +13,9 @@ module.exports.insertValues = (req, res) => {
     let sql_query = `INSERT INTO STUDENTS (NAME, EMAIL, MOBILE) VALUES('${name}', '${email}', '${mobile}');`;
     connection.query(sql_query, (err, result) => {
         if (err) return console.log("Error while inserted data " + err);
-        res.json({ 'message ': "insert was successfull", "result": result.insertId });
+        // res.json({ 'message ': "insert was successfull", "result": result.insertId });
+
+        res.redirect("/student");
     });
 };
 
@@ -23,7 +25,7 @@ module.exports.getStudent = (req, res) => {
     connection.query(sql, (err, result) => {
         if (err) return console.log(err);
 
-        res.render(__dirname + "/students", { studends: result });
+        res.render(__dirname + "/students", { students: result });
         // res.render('students');
     })
 }

@@ -48,7 +48,21 @@ module.exports.updateStudent = (req, res) => {
     connection.query(sql, [id], (err, result) => {
         if (err) return console.log(err);
 
-        res.render(__dirname + "/update-student", {student : result});
+        res.render(__dirname + "/update-student", { student: result });
+    })
+}
+module.exports.updateStudentDetails = (req, res) => {
 
+    let name = req.body.name;
+    let email = req.body.email;
+    let mobile = req.body.mobile;
+    let id = req.body.id;
+
+    let sql = "UPDATE STUDENTS SET NAME=?, EMAIL=?, MOBILE=? WHERE ID=?";
+
+    connection.query(sql, [name, email, mobile, id], (err, result) => {
+        if (err) return console.log(err);
+
+        res.redirect('/student');
     })
 }

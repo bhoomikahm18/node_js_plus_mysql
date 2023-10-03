@@ -3,7 +3,6 @@ const express = require("express");
 const connection = require('../models/Connection.js')
 
 module.exports.homePage = (req, res) => {
-    
     res.sendFile(__dirname + '/register.html');
 };
 

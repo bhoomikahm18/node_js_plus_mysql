@@ -11,6 +11,7 @@ module.exports.insertValues = (req, res) => {
     const { name, email, mobile } = req.body;
 
     let sql_query = `INSERT INTO STUDENTS (NAME, EMAIL, MOBILE) VALUES('${name}', '${email}', '${mobile}');`;
+    
     connection.query(sql_query, (err, result) => {
         if (err) return console.log("Error while inserted data " + err);
         res.json({ 'message ': "insert was successfull", "result": result.insertId });

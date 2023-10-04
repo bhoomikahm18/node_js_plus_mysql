@@ -15,7 +15,7 @@ module.exports.insertValues = (req, res) => {
         if (err) return console.log("Error while inserted data " + err);
         // res.json({ 'message ': "insert was successfull", "result": result.insertId });
 
-        res.redirect("/student");
+        res.redirect("student");
     });
 };
 
@@ -25,7 +25,7 @@ module.exports.getStudent = (req, res) => {
     connection.query(sql, (err, result) => {
         if (err) return console.log(err);
 
-        res.render(__dirname + "/students", { students: result });
+        res.render("students", { students: result });
         // res.render('students');
     });
 };
@@ -37,7 +37,7 @@ module.exports.deleteStudent = (req, res) => {
     connection.query(sql, [id], (err, result) => {
         if (err) return console.log(err);
 
-        res.redirect("/student");
+        res.redirect("student");
     });
 };
 
@@ -48,7 +48,7 @@ module.exports.updateStudent = (req, res) => {
     connection.query(sql, [id], (err, result) => {
         if (err) return console.log(err);
 
-        res.render(__dirname + "/update-student", { student: result });
+        res.render("update-student", { student: result });
     });
 };
 
@@ -64,7 +64,7 @@ module.exports.updateStudentDetails = (req, res) => {
     connection.query(sql, [name, email, mobile, id], (err, result) => {
         if (err) return console.log(err);
 
-        res.redirect('/student');
+        res.redirect('student');
     });
 };
 
@@ -72,7 +72,7 @@ module.exports.searchStudents= (req, res)=>{
     let sql = "SELECT * FROM STUDENTS";
     connection.query(sql, (err, result)=>{
         if(err ) return console.log(err);
-        res.render(__dirname+"/search-students", {students:result});
+        res.render("search-students", {students:result});
        
     })
 }
@@ -84,6 +84,6 @@ module.exports.searchStudentsDetails =(req, res)=>{
     let sql = "SELECT * FROM STUDENTS WHERE NAME LIKE '%"+name+"%'AND EMAIL LIKE '%"+email+"%' AND MOBILE LIKE '%"+mobile+"%'";
     connection.query(sql, (err, result)=>{
         if(err)console.log(err);
-        res.render(__dirname+"/search-students", {students:result});
+        res.render("search-students", {students:result});
     })
 }
